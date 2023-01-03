@@ -1,0 +1,9 @@
+slotA = arm motor
+slotB = left wheels
+slotC = right wheels
+slotD = 
+
+slot1 = 
+slot2 = gyroscope
+slot3 = 
+slot4 = sonar sensor

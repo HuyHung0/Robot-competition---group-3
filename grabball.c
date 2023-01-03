@@ -17,7 +17,7 @@ int main(void)
 
     // Open the tacho motors
     tacho_desc_t arm_motor;
-    if ( ev3_search_tacho_plugged_in(PORT_D, 0, &arm_motor, 0 ) == 0) {
+    if ( ev3_search_tacho_plugged_in(PORT_A, 0, &arm_motor, 0 ) == 0) {
         printf( "Tacho motor is found\n" );
     } else {
         printf( "Tacho motor is NOT found\n" );
