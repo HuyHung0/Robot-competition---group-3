@@ -3,7 +3,7 @@ slotB = left wheels
 slotC = right wheels
 slotD = 
 
-slot1 = 
+slot1 = touch sensor
 slot2 = gyroscope
-slot3 = 
+slot3 = color sensor
 slot4 = sonar sensor

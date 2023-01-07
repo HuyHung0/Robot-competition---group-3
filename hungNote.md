@@ -21,4 +21,20 @@ Some remarks:
  The last command need to run with sudo
  ![](screenshots/screenshot_06-01-2023_12h08m47.png)
 
- 
+ # More detail about cross compilation
+Clone the project of ev3
+```
+ git clone https://github.com/in4lio/ev3dev-c
+```
+then
+ ```
+docker run --rm -it -h ev3 -v ~/sharedDriver/Git_projects/os_labs/robot_project/:/src -w /src ev3cc /bin/bash
+ ```
+ where ~/sharedDriver/Git_projects/os_labs/robot_project/ is the path you want docker open in.
+
+Inside docker, go to /src/ev3dev-c/source/ev3 folder (which is inside the gitproject that you clone) and run
+ ```
+ [Shell in container]$ make&&sudo make install&&make shared&&sudo make shared-install
+ ```
+ Now, inside your Makefile, add "export LD_LIBRARY_PATH=~/ev3_lib/ev3dev-c/lib"
+ and change gcc to "arm-linux-gnueabi-gcc"
