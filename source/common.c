@@ -1,5 +1,7 @@
 #include "../include/common.h"
 
+// motors[0] is left
+// motors[1] is right
 // COMMON MOVING FUNCTION
 void stop_motor(uint8_t motor){
     set_tacho_command_inx(motor, TACHO_STOP);

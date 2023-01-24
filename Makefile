@@ -6,8 +6,8 @@ SOURCE_DIR 	= ./source
 
 OBJS = \
 	$(BUILD_DIR)/common.o \
-	# $(BUILD_DIR)/testColor.o \
-	# $(BUILD_DIR)/testRunning.o \
+	$(BUILD_DIR)/testColor.o \
+	$(BUILD_DIR)/testRunning.o \
 
 all: $(OBJS)
 
