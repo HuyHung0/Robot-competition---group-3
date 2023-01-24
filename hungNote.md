@@ -39,6 +39,10 @@ Inside docker, go to /src/ev3dev-c/source/ev3 folder (which is inside the gitpro
  Now, inside your Makefile in /src/, add "export LD_LIBRARY_PATH=~/ev3_lib/ev3dev-c/lib"
  and change gcc to "arm-linux-gnueabi-gcc"
 
+ ```
+ arm-linux-gnueabi-gcc -I./ev3dev-c/source/ev3 -O2 -std=gnu99 -W -Wall -Wno-comment -c go_straightV2.c -o go_straightV2.o
+ ```
+
  # II. Introduction to ev3.
  Here is a link give instruction about ev3 with some image
  [https://petlja.org/biblioteka/r/lekcije/BlockBasedProgMakeCodeEng/makecode-and-ev3](https://petlja.org/biblioteka/r/lekcije/BlockBasedProgMakeCodeEng/makecode-and-ev3)

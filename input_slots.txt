@@ -1,7 +1,7 @@
 slotA = arm motor
 slotB = left wheels
 slotC = right wheels
-slotD = 
+slotD = the last
 
 slot1 = touch sensor
 slot2 = gyroscope
