@@ -106,6 +106,8 @@ int main( void )
     }
   }
 
+
+/*
   //Run all sensors
   ev3_sensor_init();
 
@@ -170,7 +172,7 @@ int main( void )
     if ( _check_pressed( sn_touch )) break;
     Sleep( 200 );
   }
-
+*/
   ev3_uninit();
   printf( "*** ( EV3 ) Bye! ***\n" );
 
