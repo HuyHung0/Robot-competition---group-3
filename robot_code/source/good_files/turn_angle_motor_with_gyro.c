@@ -1,5 +1,5 @@
 //LE Huy Hung
-//Turn the robot to the right 90 degree (make left motor rotate with 105 speed)
+//Turn the robot to the with angle input from user
 // We can decrease the error_angle constant by making the speed of motor lower.
 
 #include <stdio.h>
