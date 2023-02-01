@@ -85,7 +85,7 @@ int main(void)
                 grab_ball();
                 control_arm(1000, 0.3);
                 go_backwards_cm_foratime(motors, 2, MAX_SPEED/10);
-                turn_right_motors(motors, MAX_SPEED/10, 100);
+                turn_right_motors(motors, MAX_SPEED/10, 110);
                 break;
 
             }
