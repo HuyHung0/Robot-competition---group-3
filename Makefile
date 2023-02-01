@@ -1,18 +1,23 @@
-# Makefile for cross compiling. Create .o file in docker using arm-linux-gnueabi-gcc
-# Copy the object file to the robot, the compiling with gcc in the robot
-# gcc tester.o -Wall -lm -lev3dev-c -o tester
-# gcc i2c.o -Wall -lm -lev3dev-c -o i2c
-# gcc tester.o -Wall -lm -lev3dev-c -o tester
-# ./i2c
-# ./tester
 CC = arm-linux-gnueabi-gcc
+INCLUDES = -I./ev3dev-c/source/ev3
+CFLAGS = -O2 -std=gnu99 -W -Wall -Wno-comment
+BUILD_DIR = ./build
+SOURCE_DIR 	= ./source
 
-all:
-	$(CC) -I./ev3dev-c/source/ev3 -O2 -std=gnu99 -W -Wall -Wno-comment -c tester.c -o tester.o
-	$(CC) -I./ev3dev-c/source/ev3 -O2 -std=gnu99 -W -Wall -Wno-comment -c i2c.c -o i2c.o
-i2c:
-	$(CC) -I./ev3dev-c/source/ev3 -O2 -std=gnu99 -W -Wall -Wno-comment -c i2c.c -o i2c.o
-tester:
-	$(CC) -I./ev3dev-c/source/ev3 -O2 -std=gnu99 -W -Wall -Wno-comment -c tester.c -o tester.o
+OBJS = \
+	$(BUILD_DIR)/common.o \
+	$(BUILD_DIR)/testColor.o \
+	$(BUILD_DIR)/testRunning.o \
 
+all: $(OBJS)
 
+$(OBJS): $(BUILD_DIR)
+
+$(BUILD_DIR):
+	mkdir $(BUILD_DIR)
+
+$(BUILD_DIR)/%.o: $(SOURCE_DIR)/%.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c $(SOURCE_DIR)/$*.c -o $(BUILD_DIR)/$*.o
+
+clean:
+	rm -f $(BUILD_DIR)/*.o
