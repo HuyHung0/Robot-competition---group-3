@@ -1,29 +1,25 @@
-# Makefile for compiling an ev3 project with the following folder structure:
+# Makefile for cross-compiling c file on docker for the robot ev3 with the following folder structure:
 #
 #	this_folder/
 # 		Makefile (this file)
 #		ev3dev-c/
 #		libraries/
-#			libbluetooth.a
 #			libev3dev-c.a
 #		include/
-# 			bt_client.h
-#			messages.h
-#			movement.h
-#			sensors.h
+#			//file .h
 #	 	source/
-#			sensors.c
-#			
+#			file .c		
 #		bin/
-#			sensors
+#			binary file generated
 #
-# The main executable will be located in the same directory as you ran 
-# "Make" from. To add new .c files, simply add them to the OBJS variable.
+# The make command will compile all present c file in folder source/
+# and generated the corresponding binary file (with corresponding name) in folder bin/
+
 
 CC 			= arm-linux-gnueabi-gcc
 CFLAGS 		= -O2 -g -std=gnu99 -W -Wall -Wno-comment
 INCLUDES 	= -I./ev3dev-c/source/ev3 -I./include/
-LDFLAGS 	= -L./libraries -lm -lev3dev-c
+LDFLAGS 	= -L./libraries -lm -lev3dev-c -pthread
 BUILD_DIR 	= ./build
 SOURCE_DIR 	= ./source
 BIN_DIR		= ./bin
