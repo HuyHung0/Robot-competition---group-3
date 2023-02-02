@@ -1,29 +1,42 @@
+[TOC]
+---
+
 # Project of Fall 2022: "Attack/Defense basket-ball game" - Group number 3 (SEAL)
 
-## Getting started
+This project is created for OS course in EURECOM. The project is to design and code an EV3 Mindstorm Lego robot to play basketball as an attacker and also a defender.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## About us
+<p align="center">
+  <img src="images/seal.jpeg">
+</p>
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Our members:
+ - Khairul Annuar, SUHAIMI (Khairul.Suhaimi@eurecom.fr)
+ - Muhamad Ikhwan, JOHARI (Muhamad.Johari@eurecom.fr)
+ - Nguyen Duc, Khai ( Khai.Nguyen@eurecom.fr )
+ - Huy Hung, LE (Huy-hung.le@eurecom.fr)
 
-## Add your files
+The name of our team is South East Asia lancer (SEAL).
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.eurecom.fr/nguyenk/osrobot.git
-git branch -M main
-git push -uf origin main
-```
-![SEAL LOGO](images/seal.jpeg "SEAL")
+Our website is [https://ikhwanjohari2.wixsite.com/mysite](https://ikhwanjohari2.wixsite.com/mysite).
 
 
-### This project is created for OS course in EURECOM. The project is to design and code an EV3 Mindstorm Lego robot to play basketball as an attacker and also a defender. For more information, you can click on this link [OS PROJECT 2022](https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html)
+For more information about the robot competition, visit [https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html](https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html)
 
 
 ## Our Robot design
+The robot has been redesigned for many times.
+At the beggining, we follow the defalt construction from LEGO. The first design version of the robot which used for the test section has a big arm which can grab the ball and thow it behind the robot. It use two motors for grabbing ball.
+
+We try to redesigned such as only use one motor for both grabbing and lifting. The mechanism of grabbing and lifting was follow some video on youtube. But we failed when try to design the robot for throwing. So we come back to old form with some small improvemnt.
+
+However, with the old form, we had a problem when we want to hold the arm in the middle air (to avoid block the sonar sensor).  The arm was too heavy. And we decided to redesign it again. This time, we success in combining throwing to the design.
+
+Again, there is problem when we throw the ball. The force is not strong enough. It can throw ball but not very stayalbe. Also the angle when moving the arm is not stable and change randomly.
+
+Finally, we create an improvement of the current design that can keep the ball consitently and not need to use the hand to hold it when moving. Also the throwing mechanism seems more reliable although we still need the ball bounce one to enter the basket. The robot can also hold two balls at the begining.
+
+
 ![FRONT VIEW](images/front_view.jpeg "FRONT VIEW")
 ![SIDE VIEW](images/side_view.jpeg "SIDE VIEW")
 ![REAR VIEW](images/rear_view.jpeg "REAR VIEW")
@@ -67,3 +80,5 @@ We utilise 4 motors and 3 sensors as follows :
 - For defending, we use sonar sensor and color sensor for the navigation. If the robot detects the colored line or a wall in front of it, it will turn and avoid them
 - Hence, making the robot navigates and roams in the defensive area
 
+## Other files
+In folder [robot_code/source/good_files](robot_code/source/good_files) has many file which test separated action of the robot by taking the input from use (the corresponding binary files is in [robot_code/source/good_files]). This help us do not need to recompile the program everytime the statics of the robot change or we when we redesign the robot.
