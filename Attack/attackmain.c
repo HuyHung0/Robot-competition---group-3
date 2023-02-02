@@ -41,6 +41,7 @@ int motor_init(uint8_t *motor0, uint8_t *motor1, uint8_t *arm, uint8_t *pincer);
 void go_forwards_cm_foratime(uint8_t *motors, float cm, int speed);
 void go_backwards_cm_foratime(uint8_t *motors, float cm, int speed);
 void turn_right_motors(uint8_t *motors, int speed, int deg);
+void turn_left_motors(uint8_t *motors, int speed, int deg);
 void go_forwards_cm_forever(uint8_t *motors, int speed);
 void stop_motor(uint8_t motor);
 void control_arm(int speed, float time);
@@ -58,8 +59,10 @@ const char *color[] = { "?", "BLACK", "BLUE", "GREEN", "YELLOW", "RED", "WHITE",
 int main(void)
 {
         int val;
-        //int result=0;
+        uint8_t sn_sonar;
         uint8_t sn_color;
+        float value;
+        float range = 77;
         motor_init( &motors[0], &motors[1], &motors[2], &motors[3]);
         ev3_sensor_init();
 
@@ -77,29 +80,79 @@ int main(void)
             }
 
             printf( "\r(%s) value color \n", color[val]);
-            // if (color[ val ] == color[3]){
             if (val == 4){
                 stop_motor( motors[0]);
                 stop_motor( motors[1]);
+                //Kick first ball which is already on the launcher
+                control_arm(-1000,1);
+                control_arm(200,2);
+                //Put the ball from grabber to launcher and kick
+                control_pincer(300,2.5);
                 reset_pincer();
-                grab_ball();
-                control_arm(1000, 0.3);
+                control_arm(-1000,1);
+                control_arm(200,2);
+                //Reverse a bit to avoid crossing colored line
                 go_backwards_cm_foratime(motors, 2, MAX_SPEED/10);
-                turn_right_motors(motors, MAX_SPEED/10, 110);
+                turn_right_motors(motors, MAX_SPEED/10, 105);
                 break;
-
             }
-            
-            fflush( stdout );
         }
     }
+       
+        if (ev3_search_sensor(LEGO_EV3_US, &sn_sonar,0)){
+        printf("SONAR found, reading sonar...\n");
+        for (; ; ){
+            go_forwards_cm_forever(motors, MAX_SPEED/20);
+            if ( !get_sensor_value0(sn_sonar, &value )) {
+                value = 0;
+            } else {
+                get_sensor_value0(sn_sonar, &value );
+            }
 
-                //go_forwards_cm_foratime(motors, 140, MAX_SPEED/5);
-                //turn_right_motors(motors, MAX_SPEED/10, 90);
-                //go_backwards_cm_foratime(motors, 115, MAX_SPEED/3);
-                //go_forwards_cm_foratime(motors, 57.5, MAX_SPEED/3);
+            if (value < range){
+                stop_motor( motors[0]);
+                stop_motor( motors[1]);
+                grab_ball();
+                reset_pincer();
+                turn_left_motors(motors, MAX_SPEED/10, 105);
+                control_arm(-1000, 1);
+                control_arm(200, 2);
+                turn_left_motors(motors, MAX_SPEED/10, 105);
+                break;
+            }
 
-                ev3_uninit();
+                   printf ("\r(%f) \n", value);
+                   fflush( stdout );
+        }
+        }
+
+        if (ev3_search_sensor(LEGO_EV3_US, &sn_sonar,0)){
+        	printf("SONAR found, reading sonar...\n");
+        	for (; ;){
+        		go_forwards_cm_forever(motors, MAX_SPEED/20);
+        		if ( !get_sensor_value0(sn_sonar, &value )) {
+        			value = 0;
+        		} else {
+        			get_sensor_value0(sn_sonar, &value );
+        		}
+
+        		if (value < range){
+        			stop_motor( motors[0]);
+        			stop_motor( motors[1]);
+        			grab_ball();
+        			reset_pincer();
+        			turn_right_motors(motors, MAX_SPEED/10, 105);
+        			control_arm(-1000,1);
+        			control_arm(200,2);
+        			break;
+        		}
+
+        		printf ("\r(%f) \n", value);
+        		fflush( stdout );
+        	}
+        }
+
+        ev3_uninit();
         printf( "*** ( EV3 ) Bye! ***\n" );
         //close();
         return 0;
