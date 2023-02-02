@@ -90,8 +90,6 @@ void go_backwards_cm_foratime(uint8_t *motors, float cm, int speed) {
   set_tacho_command_inx( motors[1], TACHO_RUN_TIMED );
   wait_motor_stop(motors[0]);
   wait_motor_stop(motors[1]);
-  //my_pos.x = my_pos.x + cm * sin((my_pos.dir * M_PI) / 180.0);
-  //my_pos.y = my_pos.y + cm * cos((my_pos.dir * M_PI) / 180.0);
 }
 
 //Function to make robot go reverse in defined cm
@@ -108,9 +106,6 @@ void go_forwards_cm_foratime(uint8_t *motors, float cm, int speed) {
   set_tacho_command_inx( motors[1], TACHO_RUN_TIMED );
   wait_motor_stop(motors[0]);
   wait_motor_stop(motors[1]);
-  //my_pos.x = my_pos.x - cm * sin((my_pos.dir * M_PI) / 180.0);
-  //my_pos.y = my_pos.y - cm * cos((my_pos.dir * M_PI) / 180.0);
-
 }
 
 
