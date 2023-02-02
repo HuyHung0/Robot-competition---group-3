@@ -42,7 +42,9 @@ We utilise 4 motors and 3 sensors as follows :
 1. 1st Motor : Right Wheel
 2. 2nd Motor : Left Wheel
 3. 3rd Motor : Kicker
+   - Used to kick the ball and try to score into the basket
 4. 4th Motor : Grappler
+   - Used as a claw which will move downwards to grab the ball and upwards to hold the ball before it is kicked by the Kicker
 
 5. 1st Sensor : Sonar Sensor
    - We use the sonar sensor to detect the distance between the robot and the ball, hence making the robot stops in a precise distance from the ball letting the grappler hand to be able to pickup the ball and keep it 
@@ -51,4 +53,17 @@ We utilise 4 motors and 3 sensors as follows :
 7. 3rd Sensor : Gyro Sensor
    - We use the gyro sensor to help the robot moves, navigates and making turns with precise calculations and data
 
+## Our Strategy
+
+### Attacking
+- For attacking, our strategy is to score the ball that we already have in the grappler by going straight to the colored line using the color sensor.
+- After reaching the colored line, the robot will kick the ball into the basket and making a right turn facing the ball on its right
+- Robot will move slowly towards the ball until the sonar sensor detects the suitable distance, making the robot stops
+- Robot will then pickup the ball in front of it and turns left facing the goal once again. It will kick the ball into the basketball
+- Robot turns left facing the leftside of the arena, and move slowly towards the ball on its left until the sonar sensor detects the precised distance
+- Robot will pickup the ball and make a right turn facing the goal and kick the ball into it
+
+### defending
+- For defending, we use sonar sensor and color sensor for the navigation. If the robot detects the colored line or a wall in front of it, it will turn and avoid them
+- Hence, making the robot navigates and roams in the defensive area
 
