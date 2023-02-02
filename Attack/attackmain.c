@@ -1,3 +1,6 @@
+/*Author of this file : Ikhwan, Khairul, Khai Nguyen*/
+
+
 //Define Libraries
 #include <stdarg.h>
 #include <time.h>
