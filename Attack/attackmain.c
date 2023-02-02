@@ -52,12 +52,13 @@ void control_pincer(int speed, float time);
 void grab_ball();
 void reset_pincer();
 
+//Khai Nguyen
 //Define Colors
 const char *color[] = { "?", "BLACK", "BLUE", "GREEN", "YELLOW", "RED", "WHITE", "BROWN" };
 #define COLOR_COUNT  (( int )( sizeof( color ) / sizeof( color[ 0 ])))
 
 
-
+//Ikhwan, Khairul, Khai Nguyen
 //Main program
 int main(void)
 {
