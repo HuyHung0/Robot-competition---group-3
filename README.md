@@ -18,3 +18,6 @@ git branch -M main
 git push -uf origin main
 ```
 
+Inline-style (hover to see title text):
+
+![SEAL LOGO](images/seal.jpeg "SEAL")
