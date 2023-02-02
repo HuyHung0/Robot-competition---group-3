@@ -5,6 +5,8 @@
 
 This project is created for OS course in EURECOM. The project is to design and code an EV3 Mindstorm Lego robot to play basketball as an attacker and also a defender.
 
+For more information about the robot competition, visit [https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html](https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html)
+
 ## About us
 <p align="center">
   <img src="images/seal.jpeg">
@@ -21,32 +23,68 @@ The name of our team is South East Asia lancer (SEAL).
 Our website is [https://ikhwanjohari2.wixsite.com/mysite](https://ikhwanjohari2.wixsite.com/mysite).
 
 
-For more information about the robot competition, visit [https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html](https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html)
+
 
 
 ## Our Robot design
-The robot has been redesigned for many times.
-At the beggining, we follow the defalt construction from LEGO. The first design version of the robot which used for the test section has a big arm which can grab the ball and thow it behind the robot. It use two motors for grabbing ball.
+The robot complies to the specifications given which are:
 
-We try to redesigned such as only use one motor for both grabbing and lifting. The mechanism of grabbing and lifting was follow some video on youtube. But we failed when try to design the robot for throwing. So we come back to old form with some small improvemnt.
+- The robot must be contained in width=30cm, length=30cm, height=35cm maximum at start-up
+- The robot must contain a flag, on which the number of your group is clearly readable from at least two sides of your robot. The flag dimension is at most 10x10cm. It may also contain a logo, a drawing, and the name of the robot
+- The program you run should have been totally written in C.
 
+
+Our robot has been redesigned for many times which is time consuming and affected a lot the current writting code. However, we went through the problem with patient and with some test functions which takes input from users (see [robot_code/source/good_files](robot_code/source/good_files) and [robot_code/bin/good_files](robot_code/bin/good_files)).
+At the beggining, we follow the default construction from LEGO. to get a first imagination of the design.
+
+### First design (Ikhwan and Khairul)
+See the video for the very first version:
+[videos/first_design.mp4](videos/first_design.mp4)
+
+The first design version of the robot which used for the test section had a big arm (similar to above video) which can grab the ball and threw it behind the robot. It used two motors for grabbing ball. This version of robot does the throwing and grabbing very stable and consistent.
+
+We wanted to  redesign such that we  only use one motor for both grabbing and lifting. If we can do it, it will be easy when writting code for grabbing or throwing.
+- The mechanism of grabbing and lifting followed [a video on youtube](https://www.youtube.com/watch?v=nTLB9GWRyuo).
+- But we failed when try to design the throwing mechanism. So we reconstructed to old form (first design) with some small improvemnt.
+
+
+
+
+
+### Second design (Hung)
 However, with the old form, we had a problem when we want to hold the arm in the middle air (to avoid block the sonar sensor).  The arm was too heavy. And we decided to redesign it again. This time, we success in combining throwing to the design.
 
-Again, there is problem when we throw the ball. The force is not strong enough. It can throw ball but not very stayalbe. Also the angle when moving the arm is not stable and change randomly.
+The grabbing and lifting using only one motor followed the principal mechanism in this video [https://www.youtube.com/watch?v=nTLB9GWRyuo](https://www.youtube.com/watch?v=nTLB9GWRyuo). We remove all the unnecessary part, keep only the main components and build the hand base on that.
 
-Finally, we create an improvement of the current design that can keep the ball consitently and not need to use the hand to hold it when moving. Also the throwing mechanism seems more reliable although we still need the ball bounce one to enter the basket. The robot can also hold two balls at the begining.
+ - The small motor is used for grabbing and lift together. So we only need to test the speed and time running for the motor to have a good place.
 
+ - The big orange motor is use for throwing ball and attached in front and inverse with the grabbing motor as in the side view. However, through testing, the ball threw not very far. It can sometimes score balls but not reliable.
 
 ![FRONT VIEW](images/front_view.jpeg "FRONT VIEW")
 ![SIDE VIEW](images/side_view.jpeg "SIDE VIEW")
 ![REAR VIEW](images/rear_view.jpeg "REAR VIEW")
 ![TOP VIEW](images/top_view.jpeg "TOP VIEW")
 
-The robot complies to the specifications given which are:
 
-- The robot must be contained in width=30cm, length=30cm, height=35cm maximum at start-up
-- The robot must contain a flag, on which the number of your group is clearly readable from at least two sides of your robot. The flag dimension is at most 10x10cm. It may also contain a logo, a drawing, and the name of the robot
-- The program you run should have been totally written in C.
+
+### Final designed (Hung)
+With the second design, there was problem when we threw the ball. The force was not strong enough. It could throw ball but it was not very stayble. Also the angle when moving the arm is not stable and change randomly. And we decided to redesigned it.
+
+The final design kept the structure of grabbing and lifting using only one motor of the second design. We attached the throwing motor behind the grabbing motor and assemble the kicker such as it can turn full cirle without being blocked. Then we added a block at a fixed possition as a reset point for the kicker.
+
+With this design:
+ - The robot can keep the ball consitently and not need to use the hand to hold it when moving.
+ - The robot can also hold two balls at the begining.
+ - Finally, the throwing mechanism seems more reliable although we still need the ball bounce one time before entering the basket. We set up the speed and time such as it can score at defender line.
+
+![images/final_design/front_view.JPEG](images/final_design/front_view.JPEG)
+![images/final_design/side_view.JPEG](images/final_design/side_view.JPEG)
+![images/final_design/side_view2.JPEG](images/final_design/side_view2.JPEG)
+![images/final_design/side_view3.JPEG](images/final_design/side_view3.JPEG)
+![images/final_design/2f8e7316-eb15-4694-9462-2e23124c68c4-1.jpg](images/final_design/2f8e7316-eb15-4694-9462-2e23124c68c4-1.jpg)
+
+![images/final_design/2f8e7316-eb15-4694-9462-2e23124c68c4.jpg](images/final_design/2f8e7316-eb15-4694-9462-2e23124c68c4.jpg)
+
 
 ## Robot Components
 
@@ -57,7 +95,8 @@ We utilise 4 motors and 3 sensors as follows :
 3. 3rd Motor : Kicker
    - Used to kick the ball and try to score into the basket
 4. 4th Motor : Grappler
-   - Used as a claw which will move downwards to grab the ball and upwards to hold the ball before it is kicked by the Kicker
+   - Used as a claw which will move downwards to grab the ball and upwards to hold the ball before it is kicked by the Kicker.
+  This motor is used for both grabbing and lifting the ball.
 
 5. 1st Sensor : Sonar Sensor
    - We use the sonar sensor to detect the distance between the robot and the ball, hence making the robot stops in a precise distance from the ball letting the grappler hand to be able to pickup the ball and keep it 
@@ -65,6 +104,8 @@ We utilise 4 motors and 3 sensors as follows :
    - We use the color sensor to detect the colored line in front of the defensive area. This is used both in attacking and defending. For attacking, the color sensor prevents the robot from entering the defensive area which will make it loses points while in defending the color sensor prevents the robot from leaving the defensive area. This is to let the robot navigate and circulate in the area as an act of defending the goal
 7. 3rd Sensor : Gyro Sensor
    - We use the gyro sensor to help the robot moves, navigates and making turns with precise calculations and data
+
+(We assembled the Compass sensor but haven't used it yet.)
 
 ## Our Strategy
 
@@ -80,5 +121,16 @@ We utilise 4 motors and 3 sensors as follows :
 - For defending, we use sonar sensor and color sensor for the navigation. If the robot detects the colored line or a wall in front of it, it will turn and avoid them
 - Hence, making the robot navigates and roams in the defensive area
 
-## Other files
-In folder [robot_code/source/good_files](robot_code/source/good_files) has many file which test separated action of the robot by taking the input from use (the corresponding binary files is in [robot_code/source/good_files]). This help us do not need to recompile the program everytime the statics of the robot change or we when we redesign the robot.
+## Other files and cross-compiling
+- File [robot_code/Makefile](robot_code/Makefile) is used for cross-compiling on docker, which can compile any c files in folder [robot_code/source](robot_code/source) and create a binary file with corresponding name in folder [robot_code/bin](robot_code/bin).
+- The command to run docker is
+```bash
+docker run --rm -it -h ev3 -v $(pwd):/src -w /src ev3cc /bin/bash
+```
+Here, assume that you want to open docker in current directory  (normally, it is the folder [robot_code](robot_code)) and the file name path don't have space.
+
+- To run cross-compiling, the structure of the folder should be the same as describing in the [Makefile](robot_code/Makefile). And, you also need to have the library [robot_code/libraries/libev3dev-c.a](robot_code/libraries/libev3dev-c.a). For more detail about cross-compiling, see [https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html](https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html) or [the home page](https://www.ev3dev.org/docs/tutorials/using-docker-to-cross-compile/) .
+
+- Folder [robot_code/source/good_files](robot_code/source/good_files) has many files which for testing separated action of the robot by taking the input from use (the corresponding binary files is in [robot_code/source/good_files]). This help us do not need to recompile the program everytime the statics of the robot change or we when we redesign the robot.
+
+- File [robot_code/throwBall.md](robot_code/throwBall.md) has an initial idea of the design which is very similar to the final design. 
