@@ -1,4 +1,4 @@
-# Project of Fall 2022: "Attack/defense basket-ball game" - Group number 3
+# Project of Fall 2022: "Attack/Defense basket-ball game" - Group number 3 (SEAL)
 
 ## Getting started
 
@@ -17,3 +17,4 @@ git remote add origin https://gitlab.eurecom.fr/nguyenk/osrobot.git
 git branch -M main
 git push -uf origin main
 ```
+
