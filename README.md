@@ -63,7 +63,7 @@ We utilise 4 motors and 3 sensors as follows :
 - Robot turns left facing the leftside of the arena, and move slowly towards the ball on its left until the sonar sensor detects the precised distance
 - Robot will pickup the ball and make a right turn facing the goal and kick the ball into it
 
-### defending
+### Defending
 - For defending, we use sonar sensor and color sensor for the navigation. If the robot detects the colored line or a wall in front of it, it will turn and avoid them
 - Hence, making the robot navigates and roams in the defensive area
 
