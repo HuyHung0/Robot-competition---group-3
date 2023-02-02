@@ -20,4 +20,4 @@ git push -uf origin main
 ![SEAL LOGO](images/seal.jpeg "SEAL")
 
 
-#This project is created for OS course in EURECOM. The project is to design and code an EV3 Mindstorm Lego robot to play basketball as an attacker and also a defender. For more information, you can click on this link [OS 2022](https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html)
+## This project is created for OS course in EURECOM. The project is to design and code an EV3 Mindstorm Lego robot to play basketball as an attacker and also a defender. For more information, you can click on this link [OS PROJECT 2022](https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html)
