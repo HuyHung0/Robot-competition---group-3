@@ -1,4 +1,4 @@
-/*Author: Ikhwan, Khairul*/
+/*Author of this file : Ikhwan, Khairul*/
 
 //Define Libraries
 #include <stdarg.h>
