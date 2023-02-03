@@ -28,7 +28,7 @@ FLAGS_T state;
 #define Sleep( msec ) usleep(( msec ) * 1000 )
 #endif
 
-//Initialisation
+//Initialisation 
 void stop_motor(uint8_t motor);
 void wait_motor_stop(uint8_t motor);
 
@@ -40,12 +40,12 @@ void wait_motor_stop(uint8_t motor);
 #define MOT_DIR 1
 #define TURN360 620
 
-//To stop motors
+//To stop motors (Ikhwan)
 void stop_motor(uint8_t motor){
         set_tacho_command_inx( motor, TACHO_STOP );
 }
 
-//To wait motors
+//To wait motors (Ikhwan)
 void wait_motor_stop(uint8_t motor){
         FLAGS_T state;
         do {
@@ -54,13 +54,13 @@ void wait_motor_stop(uint8_t motor){
 }
 
 
-//Left-Right Motors Initilization
+//Left-Right Motors Initilization 
 int motor_init(uint8_t *motor0, uint8_t *motor1, uint8_t *arm, uint8_t *pincer)
 {
   int all_ok = 1;
   ev3_tacho_init();
 
-  //Left motor initialisation
+  //Left motor initialisation (Ikhwan)
   if ( !ev3_search_tacho_plugged_in( MOT_SX, 0, motor0, 0)) {
     fprintf( stderr, "Motor left is missing!\n" );
     set_tacho_stop_action_inx( *motor0, STOP_ACTION );
@@ -71,7 +71,7 @@ int motor_init(uint8_t *motor0, uint8_t *motor1, uint8_t *arm, uint8_t *pincer)
     set_tacho_command_inx( *motor0, TACHO_STOP );
   }
 
-  //Right motor initialisation
+  //Right motor initialisation (Ikhwan)
   if ( !ev3_search_tacho_plugged_in( MOT_DX, 0, motor1, 0 )) {
     fprintf( stderr, "Motor Right not found!\n" );
     set_tacho_stop_action_inx( *motor1, STOP_ACTION );
@@ -83,7 +83,7 @@ int motor_init(uint8_t *motor0, uint8_t *motor1, uint8_t *arm, uint8_t *pincer)
   }
 
 
-  //Arm motor initialisation
+  //Arm motor initialisation (Khairul)
   if ( !ev3_search_tacho_plugged_in( ARM, 0, arm, 0 )){
     fprintf ( stderr, "Arm motor is missing!\n" );
     set_tacho_stop_action_inx( *arm, TACHO_COAST );
@@ -95,7 +95,7 @@ int motor_init(uint8_t *motor0, uint8_t *motor1, uint8_t *arm, uint8_t *pincer)
   }
 
 
-  //Pincer motor initialisation
+  //Pincer motor initialisation (Khairul)
   if ( !ev3_search_tacho_plugged_in( PINCER, 0, pincer, 0 )){
     fprintf ( stderr, "Pincer motor is missing!\n" );
     set_tacho_stop_action_inx( *pincer, TACHO_COAST );
@@ -117,7 +117,7 @@ int motor_init(uint8_t *motor0, uint8_t *motor1, uint8_t *arm, uint8_t *pincer)
   return all_ok;
 }
 
-//Function to make robot go reverse in defined cm
+//Function to make robot go reverse in defined cm (Ikhwan)
 void go_backwards_cm_foratime(uint8_t *motors, float cm, int speed) {
   float time = ((360.0*cm)/(2*M_PI*WHEEL_RADIUS)/speed)*10;
   multi_set_tacho_stop_action_inx( motors, STOP_ACTION );
@@ -131,7 +131,7 @@ void go_backwards_cm_foratime(uint8_t *motors, float cm, int speed) {
   wait_motor_stop(motors[1]);
 }
 
-//Function to make robot go forward in defined cm
+//Function to make robot go forward in defined cm (Ikhwan)
 void go_forwards_cm_foratime(uint8_t *motors, float cm, int speed) {
   float time = ((360.0*cm)/(2*M_PI*WHEEL_RADIUS)/speed)*10;
   speed = -speed;
@@ -148,7 +148,7 @@ void go_forwards_cm_foratime(uint8_t *motors, float cm, int speed) {
 }
 
 
-//Function to make robot turn right
+//Function to make robot turn right (Ikhwan)
 void turn_right_motors(uint8_t *motors, int speed, int deg){
   multi_set_tacho_stop_action_inx( motors, STOP_ACTION );
   multi_set_tacho_speed_sp ( motors, speed );
@@ -162,7 +162,7 @@ void turn_right_motors(uint8_t *motors, int speed, int deg){
 
 
 
-//Function to make robot turn left
+//Function to make robot turn left (Ikhwan)
 void turn_left_motors(uint8_t *motors, int speed, int deg){
   multi_set_tacho_stop_action_inx( motors, STOP_ACTION );
   multi_set_tacho_speed_sp ( motors, speed );
@@ -175,7 +175,7 @@ void turn_left_motors(uint8_t *motors, int speed, int deg){
 }
 
 
-//Function to make robot go backwards without destination in his life
+//Function to make robot go backwards without destination in his life (Ikhwan)
 void go_backwards_cm_forever(uint8_t *motors, int speed) {
   multi_set_tacho_stop_action_inx( motors, STOP_ACTION );
   set_tacho_speed_sp( motors[0], speed * COMP_SX);
@@ -184,7 +184,7 @@ void go_backwards_cm_forever(uint8_t *motors, int speed) {
   set_tacho_command_inx( motors[1], TACHO_RUN_FOREVER );
 }
 
-//Function to make robot go straight without destination in his life
+//Function to make robot go straight without destination in his life (Ikhwan)
 void go_forwards_cm_forever(uint8_t *motors, int speed) {
   speed = -speed;
   multi_set_tacho_stop_action_inx( motors, STOP_ACTION );
@@ -195,7 +195,7 @@ void go_forwards_cm_forever(uint8_t *motors, int speed) {
 }
 
 
-//Function to control robot arm, time is a float, enter in seconds
+//Function to control robot arm, time is a float, enter in seconds (Khairul)
 //If speed negative, tacho goes counter clockwise
 void control_arm(int speed, float time){
   if ( ev3_search_tacho_plugged_in(ARM,0, &motors[2], 0 )) {
@@ -215,7 +215,7 @@ void control_arm(int speed, float time){
 }
 
 
-//Function to control robot pincer, time is a float, enter in seconds
+//Function to control robot pincer, time is a float, enter in seconds (Khairul)
 //If speed negative, tacho goes counter clockwise
 void control_pincer(int speed, float time){
    if ( ev3_search_tacho_plugged_in(PINCER,0, &motors[3], 0 )) {
@@ -235,15 +235,15 @@ void control_pincer(int speed, float time){
 }
 
 
-//Function to grab ball
+//Function to grab ball (Khairul & Hung)
 void grab_ball(){
     printf("grabbing\n");
-    control_pincer(500, 3.2);
+    control_pincer(600, 2.6);
 }
 
 
-//Function to reset pincer
+//Function to reset pincer (Khairul & Hung)
 void reset_pincer(){
     printf("resetting\n");
-    control_pincer(-500, 5);
+    control_pincer(-600, 3);
 }
