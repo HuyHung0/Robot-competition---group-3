@@ -1,6 +1,6 @@
 /*Author of this file*/
 //Main Function : Ikhwan
-//Function used in this main file : Ikhwan, Khai Nguyen, Khairul
+//Function used in this main file : Ikhwan, Khai Nguyen, Khairul, Hung
 
 
 //Define Libraries
@@ -43,16 +43,16 @@ int IMAX;
 
 //Initialisation
 int motor_init(uint8_t *motor0, uint8_t *motor1, uint8_t *arm, uint8_t *pincer); //Ikhwan
-void go_forwards_cm_foratime(uint8_t *motors, float cm, int speed); //Ikhwan
-void go_backwards_cm_foratime(uint8_t *motors, float cm, int speed); //Ikhwan
-void turn_right_motors(uint8_t *motors, int speed, int deg); //Ikhwan
-void turn_left_motors(uint8_t *motors, int speed, int deg); //Ikhwan
-void go_forwards_cm_forever(uint8_t *motors, int speed); //Ikhwan
-void stop_motor(uint8_t motor); //Ikhwan
-void control_arm(int speed, float time); //Khairul
-void control_pincer(int speed, float time); //Khairul
-void grab_ball(); //Khairul
-void reset_pincer(); //Khairul
+void go_forwards_cm_foratime(uint8_t *motors, float cm, int speed); //Ikhwan & Khairul
+void go_backwards_cm_foratime(uint8_t *motors, float cm, int speed); //Ikhwan & Khairul
+void turn_right_motors(uint8_t *motors, int speed, int deg); //Ikhwan & Khairul
+void turn_left_motors(uint8_t *motors, int speed, int deg); //Ikhwan & Khairul
+void go_forwards_cm_forever(uint8_t *motors, int speed); //Ikhwan & Khairul
+void stop_motor(uint8_t motor); //Ikhwan & Khairul
+void control_arm(int speed, float time); //Khairul & Ikhwan
+void control_pincer(int speed, float time); //Khairul & Ikhwan
+void grab_ball(); //Khairul & Hung
+void reset_pincer(); //Khairul & Hung
 
 //Khai Nguyen
 //Define Colors
