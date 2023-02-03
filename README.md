@@ -102,8 +102,6 @@ We utilise 4 motors and 3 sensors as follows :
    - We use the sonar sensor to detect the distance between the robot and the ball, hence making the robot stops in a precise distance from the ball letting the grappler hand to be able to pickup the ball and keep it 
 6. 2nd Sensor : Color Sensor
    - We use the color sensor to detect the colored line in front of the defensive area. This is used both in attacking and defending. For attacking, the color sensor prevents the robot from entering the defensive area which will make it loses points while in defending the color sensor prevents the robot from leaving the defensive area. This is to let the robot navigate and circulate in the area as an act of defending the goal
-7. 3rd Sensor : Gyro Sensor
-   - We use the gyro sensor to help the robot moves, navigates and making turns with precise calculations and data
 
 (We assembled the Compass sensor but haven't used it yet.)
 
