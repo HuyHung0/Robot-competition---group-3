@@ -1,4 +1,6 @@
-/*Author of this file : Ikhwan, Khairul, Khai Nguyen*/
+/*Author of this file*/
+//Main Function : Ikhwan
+//Function used in this main file : Ikhwan, Khai Nguyen, Khairul
 
 
 //Define Libraries
@@ -37,28 +39,26 @@ int IMAX;
 #define MOT_DX 67
 #define ARM 68
 #define PINCER 65
-#define COLOR_SENSOR_MODE COL-REFLECT
+#define COLOR_SENSOR_MODE COL-REFLECT //Khai Nguyen
 
 //Initialisation
-int motor_init(uint8_t *motor0, uint8_t *motor1, uint8_t *arm, uint8_t *pincer);
-void go_forwards_cm_foratime(uint8_t *motors, float cm, int speed);
-void go_backwards_cm_foratime(uint8_t *motors, float cm, int speed);
-void turn_right_motors(uint8_t *motors, int speed, int deg);
-void turn_left_motors(uint8_t *motors, int speed, int deg);
-void go_forwards_cm_forever(uint8_t *motors, int speed);
-void stop_motor(uint8_t motor);
-void control_arm(int speed, float time);
-void control_pincer(int speed, float time);
-void grab_ball();
-void reset_pincer();
+int motor_init(uint8_t *motor0, uint8_t *motor1, uint8_t *arm, uint8_t *pincer); //Ikhwan
+void go_forwards_cm_foratime(uint8_t *motors, float cm, int speed); //Ikhwan
+void go_backwards_cm_foratime(uint8_t *motors, float cm, int speed); //Ikhwan
+void turn_right_motors(uint8_t *motors, int speed, int deg); //Ikhwan
+void turn_left_motors(uint8_t *motors, int speed, int deg); //Ikhwan
+void go_forwards_cm_forever(uint8_t *motors, int speed); //Ikhwan
+void stop_motor(uint8_t motor); //Ikhwan
+void control_arm(int speed, float time); //Khairul
+void control_pincer(int speed, float time); //Khairul
+void grab_ball(); //Khairul
+void reset_pincer(); //Khairul
 
 //Khai Nguyen
 //Define Colors
 const char *color[] = { "?", "BLACK", "BLUE", "GREEN", "YELLOW", "RED", "WHITE", "BROWN" };
 #define COLOR_COUNT  (( int )( sizeof( color ) / sizeof( color[ 0 ])))
 
-
-//Ikhwan, Khairul, Khai Nguyen
 //Main program
 int main(void)
 {
@@ -66,10 +66,11 @@ int main(void)
         uint8_t sn_sonar;
         uint8_t sn_color;
         float value;
-        float range = 77;
+        float range = 77; //Hung (Determine distance for sonar sensor)
         motor_init( &motors[0], &motors[1], &motors[2], &motors[3]);
         ev3_sensor_init();
 
+        /*-----------------Khai Nguyen, Ikhwan, Khairul----------------*/
         if ( ev3_search_sensor( LEGO_EV3_COLOR, &sn_color, 0 )) {
         printf( "COLOR sensor is found, reading COLOR...\n" );
         set_sensor_mode( sn_color, "COL-COLOR");
@@ -102,7 +103,10 @@ int main(void)
             }
         }
     }
-       
+    /*------------------------------------------------------------------------*/
+
+
+    /*------------------Khai Nguyen, Ikhwan, Khairul---------------------------*/
         if (ev3_search_sensor(LEGO_EV3_US, &sn_sonar,0)){
         printf("SONAR found, reading sonar...\n");
         for (; ; ){
@@ -129,7 +133,9 @@ int main(void)
                    fflush( stdout );
         }
         }
+    /*--------------------------------------------------------------------*/
 
+    /*--------------------------Khai Nguyen, Ikhwan, Khairul----------------------*/
         if (ev3_search_sensor(LEGO_EV3_US, &sn_sonar,0)){
         	printf("SONAR found, reading sonar...\n");
         	for (; ;){
@@ -155,7 +161,7 @@ int main(void)
         		fflush( stdout );
         	}
         }
-
+    /*-------------------------------------------------------------------*/
         ev3_uninit();
         printf( "*** ( EV3 ) Bye! ***\n" );
         //close();
