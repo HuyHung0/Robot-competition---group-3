@@ -1,5 +1,5 @@
-[[_TOC_]]
----
+[TOC]
+
 
 # Project of Fall 2022: "Attack/Defense basket-ball game" - Group number 3 (SEAL)
 
@@ -128,9 +128,9 @@ docker run --rm -it -h ev3 -v $(pwd):/src -w /src ev3cc /bin/bash
 ```
 Here, assume that you want to open docker in current directory  (normally, it is the folder [robot_code](robot_code)) and the file name path don't have space.
 
-- To run cross-compiling, the structure of the folder should be the same as describing in the [Makefile](robot_code/Makefile). And, you also need to have the library [robot_code/libraries/libev3dev-c.a](robot_code/libraries/libev3dev-c.a). For more detail about cross-compiling, see [https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html](https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html) or [the home page](https://www.ev3dev.org/docs/tutorials/using-docker-to-cross-compile/) .
+- To run cross-compiling, the structure of the folder should be the same as describing in the file[robot_code/Makefile](robot_code/Makefile). And, you also need to have the library [robot_code/libraries/libev3dev-c.a](robot_code/libraries/libev3dev-c.a). For more detail about cross-compiling, see [https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html](https://perso.telecom-paristech.fr/apvrille/OS/projects_fall2022.html) or [the home page](https://www.ev3dev.org/docs/tutorials/using-docker-to-cross-compile/) .
 
-- Folder [robot_code/source/good_files](robot_code/source/good_files) has many files which for testing separated action of the robot by taking the input from use (the corresponding binary files is in [robot_code/source/good_files]). This help us do not need to recompile the program everytime the statics of the robot change or we when we redesign the robot.
+- Folder [robot_code/source/good_files](robot_code/source/good_files) has many files which for testing separated action of the robot by taking the input from use (the corresponding binary files is in [robot_code/source/good_files](robot_code/source/good_files)). This help us do not need to recompile the program everytime the statics of the robot change or we when we redesign the robot.
 
 - File [robot_code/throwBall.md](robot_code/throwBall.md) has an initial idea of the design which is very similar to the final design. 
 
