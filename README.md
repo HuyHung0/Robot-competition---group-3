@@ -1,4 +1,4 @@
-[TOC]
+[[_TOC_]]
 ---
 
 # Project of Fall 2022: "Attack/Defense basket-ball game" - Group number 3 (SEAL)
@@ -51,7 +51,7 @@ We wanted to  redesign such that we  only use one motor for both grabbing and li
 
 
 
-### Second design (Hung)
+### Second design (Hung, Ikhwan, Khairul)
 However, with the old form, we had a problem when we want to hold the arm in the middle air (to avoid block the sonar sensor).  The arm was too heavy. And we decided to redesign it again. This time, we success in combining throwing to the design.
 
 The grabbing and lifting using only one motor followed the principal mechanism in this video [https://www.youtube.com/watch?v=nTLB9GWRyuo](https://www.youtube.com/watch?v=nTLB9GWRyuo). We remove all the unnecessary part, keep only the main components and build the hand base on that.
@@ -59,6 +59,7 @@ The grabbing and lifting using only one motor followed the principal mechanism i
  - The small motor is used for grabbing and lift together. So we only need to test the speed and time running for the motor to have a good place.
 
  - The big orange motor is use for throwing ball and attached in front and inverse with the grabbing motor as in the side view. However, through testing, the ball threw not very far. It can sometimes score balls but not reliable.
+ - Ikhwan and Khairul improved the design with additional component under the grabbing motor, which is a base preventing some parts falling down (since the grabber motor heads to the ground).
 
 ![FRONT VIEW](images/front_view.jpeg "FRONT VIEW")
 ![SIDE VIEW](images/side_view.jpeg "SIDE VIEW")
@@ -132,3 +133,31 @@ Here, assume that you want to open docker in current directory  (normally, it is
 - Folder [robot_code/source/good_files](robot_code/source/good_files) has many files which for testing separated action of the robot by taking the input from use (the corresponding binary files is in [robot_code/source/good_files]). This help us do not need to recompile the program everytime the statics of the robot change or we when we redesign the robot.
 
 - File [robot_code/throwBall.md](robot_code/throwBall.md) has an initial idea of the design which is very similar to the final design. 
+
+
+## Some notes after the competition
+### Result
+- We win as the team score the most balls (9/10 games). The second team scored 8 balls. Our strategy is throwing ball when the robot detect the defender line which is more accuracy than team 2 (it seems that their position when score ball depend on the initial possition, which is not reliable).
+- Some teams has a strategy: do nothing as defender :) and wait the attacker pass the defender line to get points. It helped them get some points when the attacker don't have a good score mechanism.
+- Team 2 seems to have a good algorithm to grab balls on the ground.
+- There is one team can score ball from attacker area (which is very far) but not very effective.
+- It seems that most of the robot starting by going straight in the middle.
+### Some bugs in the competition
+ 
+ - We score one ball almost every game except the last one. There is an error with the color sensor in the last game. It detect yellow (defender line) right after starting and shoting balls early. We guess that the reason maybe the light from the light buld of the room is yellow.
+ - Sometimes, there is a problem that the right motor does not run. We need to reset the robot and it will be normal.
+ - The kicker motor also had a problem. It rotated in the same direction even if you set the speed is negative or possitive. The reason maybe the setting speed is too high.
+ - The arm of our robot are pretty weak. In the first game, it was broken because of colliding with defender robot (but we still score point).
+ - There was a robot not packing good the wire systems. The head of the wire stuck on the arena border and made the defender robot change direction and go straight to the attacker area :).
+
+
+## Some remarks for the future
+ - Write a program to avoid the other robot. Algorithm: If there is an object ahead: fallback, turn righ (left), turn left (right) respectively (use this when we want to travel to a possition which does not have any objects in the way).
+ - Set timeout for some code: to avoid stuck in some special cases (the program is in infinite loops).
+ - Write program using multithreads, mutex and condition variable.
+ - Write a program move the robot at any position to a reset point (a point that we know coordinate). Ideas:
+   - use compass for detecting the direction
+   - use gyro to head to the right direction (we have a program to turn the robot with exactly angle using the gyro sensor in [robot_code/source/good_files/turn_angle_motor_with_gyro.c](robot_code/source/good_files/turn_angle_motor_with_gyro.c)). 
+    - Move the robot straight forward or backward until detecting the line (defender or attacker. Prefer attacker line since there would have no other robot there).
+    - At this position, turn left 90 degree and using sonar to measure distance to the arena side border, then turn right 180 degree and using sonar to measure distance to the other arena side border. (since we are facing perpencular with the arena side, the value of sonar sensor should be stable).
+    - Take the sum of two distances above, compare it with the width of the arena. If the result is approximate then we know where is the robot now. If the result is noticely different then there is some objects between the robot and the sides. Move the robot straight forward or backward and repeat the measure to the side. Then we will know which side has the objects.
